@@ -45,11 +45,11 @@ namespace Shop
         public abstract double CalcCost();     //Abstract method 
       
 
-        public double CostS = 10; //
+        public double CostS = 10; //   Various prices
         public double CostM = 20;
         public double CostL = 30;
 
-        public double CheckSize()
+        public double CheckSize() //Assigns an item a cost,depending on Size
         {
 
             if (Size == "s")
@@ -64,7 +64,7 @@ namespace Shop
             {
                 Price = CostL;
             }
-            return Price;
+            return Price; 
         }
 
 
@@ -72,8 +72,9 @@ namespace Shop
 
     }
 
+        //Below are the child classes, with various implements for the abstract method
 
-    class Shirt : OnlineStore
+    class Shirt : OnlineStore           
     {
         public override double CalcCost()
         {
@@ -114,32 +115,30 @@ namespace Shop
 
     }
 
-    class Basket : OnlineStore
+    class Basket : OnlineStore  //Class containing logic
     {
 
 
-        public List<Shirt> shirts = new List<Shirt>();
+        public List<Shirt> shirts = new List<Shirt>();   //Lists of the classes
         public List<Golfer> golfers = new List<Golfer>();
         public List<Jeans> jeans = new List<Jeans>();
         public List<Formal> formals = new List<Formal>();
        
        
-        double Total;
+        double Total; //placeholder variable
 
        
 
         public override double CalcCost()
         {
                
-                
+               //The below code calls the Calcost() Method for each item in the lists
 
             foreach (var item in shirts)
             {
                     
-                Total += item.CalcCost();
+                Total += item.CalcCost(); //adds the prices to the Total variable
                    
-
-
             }
             foreach (var item in golfers)
             {
@@ -158,7 +157,7 @@ namespace Shop
                 }
 
 
-            return Total;
+            return Total; //returns the sum of all prices
         }
 
 
